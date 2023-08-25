@@ -1,4 +1,5 @@
 const Pool = require("pg").Pool;
+const logger = require("../utils/logger");
 
 //CREATE INSTANCE OF POOL
 
@@ -14,10 +15,10 @@ const pool = new Pool({
 const connectToDatabase = async () => {
   try {
     const client = await pool.connect();
-    console.log("Connected to the database");
+    logger.info("Connected to the database");
     client.release(); // Release the client back to the pool
   } catch (error) {
-    console.error("Error connecting to the database:", error);
+    logger.info("Error connecting to the database:", error);
   }
 };
 
