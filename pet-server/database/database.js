@@ -8,7 +8,7 @@ const pool = new Pool({
   password: "malith96",
   host: "localhost",
   port: 5432,
-  database: "perntodo",
+  database: "petapp",
 });
 
 // Test the database connection
@@ -22,8 +22,11 @@ const connectToDatabase = async () => {
   }
 };
 
-//call connectToDatabase function
+//call connectToDatabase function()
 connectToDatabase();
 
 //export
-module.exports = pool;
+module.exports = {
+  pool,
+  connectToDatabase,
+};
