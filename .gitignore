@@ -1,1 +1,4 @@
 /pet-server/node_modules
+/pet-server/config/config.env
+/pet-server/server-logger-inf.log
+/pet-server/.env
