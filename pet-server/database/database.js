@@ -1,14 +1,15 @@
 const Pool = require("pg").Pool;
 const logger = require("../utils/logger");
+require("dotenv").config();
 
 //CREATE INSTANCE OF POOL
 
 const pool = new Pool({
-  user: "postgres",
-  password: "malith96",
-  host: "localhost",
-  port: 5432,
-  database: "petapp",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
 });
 
 // Test the database connection

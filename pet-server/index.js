@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const logger = require("./utils/logger");
 const databaseConnect = require("./database/database");
+require("dotenv").config();
 
 //middleware
 app.use(cors());

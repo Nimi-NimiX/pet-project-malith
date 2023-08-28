@@ -1,28 +1,14 @@
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-25T13:24:59.665Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-25T13:27:45.690Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-25T13:27:58.331Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-25T13:29:16.711Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-25T13:30:22.345Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:06:39.782Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:08:19.760Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:09:32.423Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:14:07.491Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:14:28.897Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:15:36.828Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:19:40.444Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:20:25.819Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:30:40.264Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:32:33.059Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:34:47.512Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:36:27.676Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:42:26.147Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:42:56.828Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:43:14.375Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:44:15.976Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:45:28.204Z"}
-{"level":"info","message":"Connected to the database","timestamp":"2023-08-27T08:45:28.579Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:45:58.502Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:46:33.633Z"}
-{"code":"3D000","file":"postinit.c","length":89,"level":"info","line":"947","message":"Error connecting to the database: database \"peta\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"peta\" does not exist\n    at E:\\NIMI projects\\pet-project\\pet-server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async connectToDatabase (E:\\NIMI projects\\pet-project\\pet-server\\database\\database.js:17:20)","timestamp":"2023-08-27T08:46:34.103Z"}
-{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T08:47:04.972Z"}
-{"level":"info","message":"Connected to the database","timestamp":"2023-08-27T08:47:05.359Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:30:10.076Z"}
+{"code":"28P01","file":"auth.c","length":102,"level":"info","line":"329","message":"Error connecting to the database: password authentication failed for user \"Malith\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"Malith\"\n    at E:\\NIMI projects\\pet-project\\pet-server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async connectToDatabase (E:\\NIMI projects\\pet-project\\pet-server\\database\\database.js:18:20)","timestamp":"2023-08-27T09:30:10.286Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:30:36.822Z"}
+{"code":"28P01","file":"auth.c","length":102,"level":"info","line":"329","message":"Error connecting to the database: password authentication failed for user \"Malith\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"Malith\"\n    at E:\\NIMI projects\\pet-project\\pet-server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async connectToDatabase (E:\\NIMI projects\\pet-project\\pet-server\\database\\database.js:18:20)","timestamp":"2023-08-27T09:30:37.066Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:31:14.768Z"}
+{"code":"28P01","file":"auth.c","length":102,"level":"info","line":"329","message":"Error connecting to the database: password authentication failed for user \"Malith\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"Malith\"\n    at E:\\NIMI projects\\pet-project\\pet-server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async connectToDatabase (E:\\NIMI projects\\pet-project\\pet-server\\database\\database.js:18:20)","timestamp":"2023-08-27T09:31:15.011Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:33:27.840Z"}
+{"level":"info","message":"Connected to the database","timestamp":"2023-08-27T09:33:28.181Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:35:41.099Z"}
+{"level":"info","message":"Error connecting to the database: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string","stack":"Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string\n    at E:\\NIMI projects\\pet-project\\pet-server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async connectToDatabase (E:\\NIMI projects\\pet-project\\pet-server\\database\\database.js:18:20)","timestamp":"2023-08-27T09:35:41.303Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:36:18.212Z"}
+{"level":"info","message":"Connected to the database","timestamp":"2023-08-27T09:36:18.460Z"}
+{"level":"info","message":"server has started on port 5000","timestamp":"2023-08-27T09:37:01.661Z"}
+{"level":"info","message":"Connected to the database","timestamp":"2023-08-27T09:37:01.892Z"}
