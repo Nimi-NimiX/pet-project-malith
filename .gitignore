@@ -3,3 +3,4 @@
 /pet-server/server-logger-inf.log
 /pet-server/.env
 /pet-server/database.sql
+/pet-server/models/abc.js
