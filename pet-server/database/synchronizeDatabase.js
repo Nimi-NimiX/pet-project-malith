@@ -1,5 +1,6 @@
 const { sequelize } = require("./databaseConnection");
 const User = require("../models/usersModel");
+const Company = require("../models/companyModel");
 
 // Synchronize models with the database
 const synchronizeDatabase = async () => {
