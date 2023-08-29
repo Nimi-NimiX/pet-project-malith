@@ -69,7 +69,7 @@ const Company = sequelize.define(
     },
   },
   {
-    tableName: "companies",
+    tableName: "company",
   }
 );
 
