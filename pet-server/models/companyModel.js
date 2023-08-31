@@ -76,4 +76,8 @@ const Company = sequelize.define(
   }
 );
 
+// Associations
+User.hasOne(Company); // A User can have one Company
+Company.belongsTo(User); // A Company belongs to a User
+
 module.exports = Company;
