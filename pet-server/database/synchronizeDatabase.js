@@ -1,15 +1,15 @@
-const { sequelize } = require("./databaseConnection");
-const User = require("../models/usersModel");
-const Company = require("../models/companyModel");
-const CompanyPaySlipInfo = require("../models/companyPaySlipInfoModel");
+const { sequelize } = require('./databaseConnection');
+const User = require('../models/usersModel');
+const Company = require('../models/companyModel');
+const CompanyPaySlipInfo = require('../models/companyPaySlipInfoModel');
 
 // Synchronize models with the database
 const synchronizeDatabase = async () => {
   try {
     await sequelize.sync();
-    console.log("Database synchronized with models");
+    console.log('Database synchronized with models');
   } catch (error) {
-    console.log("Error synchronizing database:", error);
+    console.error('Error synchronizing database:', error);
   }
 };
 
