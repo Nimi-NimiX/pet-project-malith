@@ -38,4 +38,8 @@ const CompanyPaySlipInfo = sequelize.define(
   }
 );
 
+// Associations
+Company.hasOne(CompanyPaySlipInfo); // A Company can have one CompanyPaySlipInfo
+CompanyPaySlipInfo.belongsTo(Company); // A CompanyPaySlipInfo belongs to a Company
+
 module.exports = CompanyPaySlipInfo;
