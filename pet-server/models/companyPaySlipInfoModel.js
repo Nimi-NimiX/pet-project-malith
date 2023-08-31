@@ -1,9 +1,9 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../database/databaseConnection");
-const Company = require("../models/companyModel"); // Import the Company model
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../database/databaseConnection');
+const Company = require('../models/companyModel'); // Import the Company model
 
 const CompanyPaySlipInfo = sequelize.define(
-  "companyPaySlipInfo",
+  'companyPaySlipInfo',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ const CompanyPaySlipInfo = sequelize.define(
       allowNull: false,
       references: {
         model: Company, // Reference the Company model
-        key: "id",
+        key: 'id',
       },
     },
     currency: {
@@ -31,7 +31,9 @@ const CompanyPaySlipInfo = sequelize.define(
     },
   },
   {
-    tableName: "companyPaySlipInfo",
+    sequelize,
+    tableName: 'company_pay_slip_info',
+    underscored: true,
   }
 );
 

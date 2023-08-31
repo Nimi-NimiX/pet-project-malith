@@ -1,9 +1,9 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../database/databaseConnection");
-const User = require("./usersModel"); // Import the User model
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../database/databaseConnection');
+const User = require('./usersModel'); // Import the User model
 
 const Company = sequelize.define(
-  "company",
+  'company',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ const Company = sequelize.define(
       allowNull: false,
       references: {
         model: User, // Reference the User model
-        key: "id",
+        key: 'id',
       },
     },
     company_name: {
@@ -69,7 +69,9 @@ const Company = sequelize.define(
     },
   },
   {
-    tableName: "company",
+    sequelize,
+    tableName: 'company',
+    underscored: true,
   }
 );
 
