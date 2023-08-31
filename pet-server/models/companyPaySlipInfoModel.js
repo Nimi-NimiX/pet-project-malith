@@ -13,6 +13,7 @@ const CompanyPaySlipInfo = sequelize.define(
     companyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: true,
       references: {
         model: Company, // Reference the Company model
         key: 'id',
