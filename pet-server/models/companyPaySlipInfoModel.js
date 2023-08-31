@@ -10,7 +10,7 @@ const CompanyPaySlipInfo = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    company_id: {
+    companyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

@@ -10,7 +10,7 @@ const Company = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -18,21 +18,21 @@ const Company = sequelize.define(
         key: 'id',
       },
     },
-    company_name: {
+    companyName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [3, 100],
       },
     },
-    company_email: {
+    companyEmail: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isEmail: true,
       },
     },
-    contact_number: {
+    contactNumber: {
       type: DataTypes.STRING,
       validate: {
         len: [10, 15],
@@ -45,14 +45,14 @@ const Company = sequelize.define(
         len: [3, 50],
       },
     },
-    address_line1: {
+    addressLine1: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [5, 100],
       },
     },
-    address_line2: {
+    addressLine2: {
       type: DataTypes.STRING,
     },
     city: {
