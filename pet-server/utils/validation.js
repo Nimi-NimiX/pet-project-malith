@@ -42,3 +42,21 @@ const validateUserData = (userData) => {
 
   return schema.validate(userData);
 };
+
+//validate the company data
+const validateCompanyData = (companyData) => {
+  const schema = Joi.object({
+    companyName: Joi.string().min(3).max(100).required(),
+    companyEmail: Joi.string().email().required(),
+    contactNumber: Joi.string()
+      .pattern(/^[0-9]{10,15}$/)
+      .required(),
+    field: Joi.string().min(3).max(50).required(),
+    addressLine1: Joi.string().min(5).max(100).required(),
+    addressLine2: Joi.string().max(100),
+    city: Joi.string().min(2).max(50),
+    country: Joi.string().min(2).max(50),
+  });
+
+  return schema.validate(companyData);
+};
