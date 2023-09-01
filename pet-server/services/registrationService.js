@@ -2,35 +2,23 @@ const bcrypt = require('bcrypt');
 const userRepository = require('../repository/usersRepository');
 const companyRepository = require('../repository/companyRepository');
 const companyPaySlipInfoRepository = require('../repository/companyPaySlipInfoRepository');
+const {
+  validateUserData,
+  validateCompanyData,
+  validatePaySlipData,
+  validateAndThrow,
+} = require('../utils/validation');
 
 const registerUserAndCompany = async (userData, companyData, paySlipData) => {
   try {
-    // Validate forme data
-    if (
-      !userData.username ||
-      !userData.email ||
-      !userData.mobileNumber ||
-      !userData.password
-    ) {
-      throw new Error('Incomplete user data.');
-    }
+    // Validate user data
+    validateAndThrow(userData, validateUserData);
 
-    if (
-      !companyData.companyName ||
-      !companyData.companyEmail ||
-      !companyData.contactNumber ||
-      !companyData.field ||
-      !companyData.addressLine1 ||
-      !companyData.addressLine2 ||
-      !companyData.city ||
-      !companyData.country
-    ) {
-      throw new Error('Incomplete company data.');
-    }
+    // Validate company data
+    validateAndThrow(companyData, validateCompanyData);
 
-    if (!paySlipData.currency || !paySlipData.payday) {
-      throw new Error('Incomplete pay slip data.');
-    }
+    // Validate pay slip data
+    validateAndThrow(paySlipData, validatePaySlipData);
 
     // Hash the password before storing
     const hashedPassword = await bcrypt.hash(userData.password, 10);
@@ -48,9 +36,12 @@ const registerUserAndCompany = async (userData, companyData, paySlipData) => {
     const paySlipInfo =
       await companyPaySlipInfoRepository.createCompanyPaySlipInfo(paySlipData);
 
+    const successMessage = 'Registration successful!';
+    console.log(successMessage);
+
     return {
       success: true,
-      message: 'Registration successful!',
+      message: successMessage,
       userData: user,
       companyData: company,
       companyPaySlipInfo: paySlipInfo,
