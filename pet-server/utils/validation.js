@@ -60,3 +60,12 @@ const validateCompanyData = (companyData) => {
 
   return schema.validate(companyData);
 };
+
+const validatePaySlipData = (paySlipData) => {
+  const schema = Joi.object({
+    currency: Joi.string().min(2).max(50).required(),
+    payday: Joi.date().required(),
+  });
+
+  return schema.validate(paySlipData);
+};
