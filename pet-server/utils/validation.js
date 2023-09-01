@@ -64,8 +64,15 @@ const validateCompanyData = (companyData) => {
 const validatePaySlipData = (paySlipData) => {
   const schema = Joi.object({
     currency: Joi.string().min(2).max(50).required(),
-    payday: Joi.date().required(),
+    payday: Joi.number().integer().min(1).max(31).required(),
   });
 
   return schema.validate(paySlipData);
+};
+
+module.exports = {
+  passwordComplexity,
+  validateUserData,
+  validateCompanyData,
+  validatePaySlipData,
 };
