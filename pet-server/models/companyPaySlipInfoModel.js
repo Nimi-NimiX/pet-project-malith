@@ -27,8 +27,12 @@ const CompanyPaySlipInfo = sequelize.define(
       },
     },
     payday: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        min: 1,
+        max: 31,
+      },
     },
   },
   {
