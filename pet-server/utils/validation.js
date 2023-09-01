@@ -70,21 +70,9 @@ const validatePaySlipData = (paySlipData) => {
   return schema.validate(paySlipData);
 };
 
-// Define the validateAndThrow function
-const validateAndThrow = (data, schema) => {
-  const { error } = schema.validate(data);
-  if (error) {
-    throw new Error(error.details[0].message);
-  } else {
-    const successMessage = 'Validation successful';
-    console.log(successMessage);
-  }
-};
-
 module.exports = {
   passwordComplexity,
   validateUserData,
   validateCompanyData,
   validatePaySlipData,
-  validateAndThrow,
 };
