@@ -12,14 +12,22 @@ const {
 const registerUserAndCompany = async (userData, companyData, paySlipData) => {
   try {
     // Validate user data
-    validateAndThrow(userData, validateUserData);
+    const { error: userError } = validateUserData(userData);
+    if (userError) {
+      console.log('user detaild not valid', userError);
+    }
 
     // Validate company data
-    validateAndThrow(companyData, validateCompanyData);
+    const { error: companyError } = validateCompanyData(companyData);
+    if (companyError) {
+      console.log('company  detaild not valid', companyError);
+    }
 
     // Validate pay slip data
-    validateAndThrow(paySlipData, validatePaySlipData);
-
+    const { error: paySlipError } = validatePaySlipData(paySlipData);
+    if (paySlipError) {
+      console.log('company pay slip  detaild not valid', paySlipError);
+    }
     // Hash the password before storing
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
