@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const userRepository = require('../repository/usersRepository');
 const { validateLoginData } = require('../utils/validation');
+const jwt = require('jsonwebtoken');
 
 const secretKey = process.env.JWT_SECRET_KEY;
 
