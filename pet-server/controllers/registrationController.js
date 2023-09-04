@@ -75,4 +75,5 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { register };
+const RegistrationController = { register };
+module.exports = RegistrationController;
