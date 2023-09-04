@@ -1,4 +1,4 @@
-const registrationService = require('../services/registrationService');
+const RegistrationService = require('../services/registrationService');
 
 const register = async (req, res) => {
   try {
@@ -44,7 +44,7 @@ const register = async (req, res) => {
       userData: user,
       companyData: company,
       companyPaySlipInfo: paySlipInfo,
-    } = await registrationService.registerUserAndCompany(
+    } = await RegistrationService.registerUserAndCompany(
       userData,
       companyData,
       paySlipData
