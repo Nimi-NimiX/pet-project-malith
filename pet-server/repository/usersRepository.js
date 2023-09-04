@@ -9,6 +9,19 @@ const createUser = async (userData) => {
   }
 };
 
+const getUserByEmail = async (email) => {
+  try {
+    const user = await User.findOne({
+      where: { email },
+    });
+
+    return user;
+  } catch (error) {
+    throw new Error(`Error fetching user by email: ${error.message} `);
+  }
+};
+
 module.exports = {
   createUser,
+  getUserByEmail,
 };
