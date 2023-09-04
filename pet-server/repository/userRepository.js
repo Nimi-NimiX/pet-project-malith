@@ -20,8 +20,5 @@ const getUserByEmail = async (email) => {
     throw new Error(`Error fetching user by email: ${error.message} `);
   }
 };
-
-module.exports = {
-  createUser,
-  getUserByEmail,
-};
+const UserRrepository = { createUser, getUserByEmail };
+module.exports = UserRrepository;
