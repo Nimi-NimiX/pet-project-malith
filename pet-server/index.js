@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-//Use the auth routes for registration
+//Use the auth routes for registration and login
 app.use('/auth', authRoutes);
 
 app.listen(process.env.SERVER_PORT, () => {
