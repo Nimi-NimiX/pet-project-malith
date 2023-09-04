@@ -88,11 +88,11 @@ const validateLoginData = (data) => {
   });
   return schema.validate(data);
 };
-
-module.exports = {
+const Validation = {
   passwordComplexity,
   validateUserData,
   validateCompanyData,
   validatePaySlipData,
   validateLoginData,
 };
+module.exports = Validation;
