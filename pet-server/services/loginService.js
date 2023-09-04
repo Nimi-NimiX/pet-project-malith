@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const userRepository = require('../repository/usersRepository');
-const { validateLoginData } = require('../utils/validation');
+const userRepository = require('../repository/userRepository');
+const Validation = require('../utils/validation');
 const jwt = require('jsonwebtoken');
 
 const secretKey = process.env.JWT_SECRET_KEY;
@@ -8,7 +8,7 @@ const secretKey = process.env.JWT_SECRET_KEY;
 const loginUser = async (email, password) => {
   try {
     // Validate user input
-    const { error } = validateLoginData({ email, password });
+    const { error } = Validation.validateLoginData({ email, password });
     if (error) {
       throw new Error(error.details[0].message);
     }
@@ -26,10 +26,10 @@ const loginUser = async (email, password) => {
     }
 
     // Generate a JWT token for authentication
-    const token = jwt.sign({ userId: user.id }, secretKey, {
-      expiresIn: '1h', // Token expires in 1 hour (adjust as needed)
+    return jwt.sign({ userId: user.id }, secretKey, {
+      expiresIn: '1h',
+      message: 'Login successful',
     });
-    return { success: true, message: 'Login successful', token };
   } catch (error) {
     throw new Error(`Login failed: ${error.message}`);
   }
