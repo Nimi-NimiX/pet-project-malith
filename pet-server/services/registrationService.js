@@ -1,29 +1,25 @@
 const bcrypt = require('bcrypt');
-const userRepository = require('../repository/usersRepository');
-const companyRepository = require('../repository/companyRepository');
-const companyPaySlipInfoRepository = require('../repository/companyPaySlipInfoRepository');
-const {
-  validateUserData,
-  validateCompanyData,
-  validatePaySlipData,
-} = require('../utils/validation');
+const UserRepository = require('../repository/userRepository');
+const CompanyRepository = require('../repository/companyRepository');
+const CompanyPaySlipRepository = require('../repository/companyPaySlipInfoRepository');
+const Validation = require('../utils/validation');
 
 const registerUserAndCompany = async (userData, companyData, paySlipData) => {
   try {
     // Validate user data
-    const { error: userError } = validateUserData(userData);
+    const { error: userError } = Validation.validateUserData(userData);
     if (userError) {
       console.log('user detaild not valid', userError);
     }
 
     // Validate company data
-    const { error: companyError } = validateCompanyData(companyData);
+    const { error: companyError } = Validation.validateCompanyData(companyData);
     if (companyError) {
       console.log('company  detaild not valid', companyError);
     }
 
     // Validate pay slip data
-    const { error: paySlipError } = validatePaySlipData(paySlipData);
+    const { error: paySlipError } = Validation.validatePaySlipData(paySlipData);
     if (paySlipError) {
       console.log('company pay slip  detaild not valid', paySlipError);
     }
@@ -32,16 +28,17 @@ const registerUserAndCompany = async (userData, companyData, paySlipData) => {
     userData.password = hashedPassword;
 
     // Register user
-    const user = await userRepository.createUser(userData);
+    const user = await UserRepository.createUser(userData);
 
     // Register company
     companyData.userId = user.id; // Attach the user ID to the companyData
-    const company = await companyRepository.createCompany(companyData);
+    const company = await CompanyRepository.createCompany(companyData);
 
     // Register companyPaySlipInfo
     paySlipData.companyId = company.id; // Attach the company ID to the paySlipData
-    const paySlipInfo =
-      await companyPaySlipInfoRepository.createCompanyPaySlipInfo(paySlipData);
+    const paySlipInfo = await CompanyPaySlipRepository.createCompanyPaySlipInfo(
+      paySlipData
+    );
 
     const successMessage = 'Registration successful!';
     console.log(successMessage);
@@ -58,6 +55,5 @@ const registerUserAndCompany = async (userData, companyData, paySlipData) => {
   }
 };
 
-module.exports = {
-  registerUserAndCompany,
-};
+const RegistrationService = { registerUserAndCompany };
+module.exports = RegistrationService;
