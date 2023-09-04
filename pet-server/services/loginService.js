@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const userRepository = require('../repository/userRepository');
+const UserRrepository = require('../repository/userRepository');
 const Validation = require('../utils/validation');
 const jwt = require('jsonwebtoken');
 
@@ -14,7 +14,7 @@ const loginUser = async (email, password) => {
     }
 
     // Retrieve the user from the database based on the provided email
-    const user = await userRepository.getUserByEmail(email);
+    const user = await UserRrepository.getUserByEmail(email);
     if (!user) {
       throw new Error(`User dosen't exsists`);
     }
