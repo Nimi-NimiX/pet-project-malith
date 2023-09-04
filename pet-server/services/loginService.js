@@ -34,7 +34,5 @@ const loginUser = async (email, password) => {
     throw new Error(`Login failed: ${error.message}`);
   }
 };
-
-module.exports = {
-  loginUser,
-};
+const LoginService = { loginUser };
+module.exports = LoginService;
