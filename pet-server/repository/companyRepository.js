@@ -24,7 +24,6 @@ const CompanyRrepository = {
 
   updateCompanyProfile: async (companyId, updatedCompanyProfile) => {
     try {
-      // Find the company by ID
       const company = await Company.findByPk(companyId, {
         include: CompanyPaySlipInfo, // Include the associated CompanyPaySlipInfo
       });

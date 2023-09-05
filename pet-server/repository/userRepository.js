@@ -30,7 +30,6 @@ const UserRrepository = {
     }
   },
   updateUserProfile: async (userId, updatedUserProfile) => {
-    // Find the user by ID
     const user = await User.findByPk(userId);
 
     if (!user) {

@@ -38,7 +38,7 @@ const ProfileController = {
 
   getCompanyProfile: async (req, res, next) => {
     try {
-      const companyId = req.company.id; // Get the company ID from the request parameters
+      const companyId = req.company.id;
       const company = await CompanyService.getCompanyProfile(companyId);
       res.json(company);
     } catch (error) {
@@ -48,8 +48,7 @@ const ProfileController = {
 
   updateCompanyProfile: async (req, res, next) => {
     try {
-      const companyId = req.company.id; // Get the company ID from the request parameters
-      const updatedProfile = req.body;
+      const companyId = req.company.id;
 
       const result = await CompanyService.updateCompanyProfile(
         companyId,

@@ -19,7 +19,6 @@ const ProfileService = {
 
   updateUserProfile: async (userId, updatedProfile) => {
     try {
-      // Validate and sanitize input data
       const { error } = Validation.validateUserProfileUpdate(updatedProfile);
       if (error) {
         throw new Error(error.details[0].message);
@@ -53,7 +52,6 @@ const ProfileService = {
 
   updateCompanyProfile: async (companyId, updatedProfile) => {
     try {
-      // Validate and sanitize input data (use CompanyValidation)
       const { error } = Validation.validateCompanyProfileUpdate(updatedProfile);
       if (error) {
         throw new Error(error.details[0].message);
