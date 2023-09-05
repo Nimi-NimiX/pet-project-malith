@@ -89,6 +89,15 @@ const Validation = {
     });
     return schema.validate(data);
   },
+  validateUserProfileUpdate: (updatedProfile) => {
+    const schema = Joi.object({
+      username: Joi.string().min(3).max(20),
+      email: Joi.string().email(),
+      mobileNumber: Joi.string().pattern(/^[0-9]{10,15}$/),
+    });
+
+    return schema.validate(updatedProfile);
+  },
 };
 
 module.exports = Validation;
