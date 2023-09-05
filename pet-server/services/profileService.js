@@ -1,10 +1,10 @@
-const usersRepository = require('../repository/usersRepository');
-const { validateUserProfileUpdate } = require('../utils/validation');
+const UserRrepository = require('../repository/userRepository');
+const Validation = require('../utils/validation');
 
 const ProfileService = {
   getUserProfile: async (userId) => {
     try {
-      const user = await usersRepository.getUserById(userId);
+      const user = await UserRrepository.findById(userId);
 
       if (!user) {
         throw new Error('User not found');
@@ -19,19 +19,22 @@ const ProfileService = {
   updateUserProfile: async (userId, updatedProfile) => {
     try {
       // Validate and sanitize input data
-      const { error } = validateUserProfileUpdate(updatedProfile);
+      const { error } = Validation.validateUserProfileUpdate(updatedProfile);
       if (error) {
         throw new Error(error.details[0].message);
       }
 
-      const user = await usersRepository.getUserById(userId);
+      const user = await UserRrepository.findById(userId);
 
       if (!user) {
         throw new Error('User not found');
       }
 
       // Update user profile
-      const result = await usersRepository.updateUser(user, updatedProfile);
+      const result = await UserRrepository.updateUserProfile(
+        userId,
+        updatedProfile
+      );
 
       return result;
     } catch (error) {
