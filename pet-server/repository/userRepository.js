@@ -21,6 +21,14 @@ const UserRrepository = {
       throw new Error(`Error fetching user by email: ${error.message} `);
     }
   },
+  findById: async (id) => {
+    try {
+      const user = await User.findByPk(id);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 module.exports = UserRrepository;
