@@ -14,5 +14,14 @@ router.put(
   Authentication.authenticateUser,
   ProfileController.updateUserProfile
 );
-
+router.get(
+  '/profile',
+  Authentication.authenticateUser,
+  ProfileController.getCompanyProfile
+);
+router.put(
+  '/profile',
+  Authentication.authenticateUser,
+  ProfileController.updateCompanyProfile
+);
 module.exports = router;
