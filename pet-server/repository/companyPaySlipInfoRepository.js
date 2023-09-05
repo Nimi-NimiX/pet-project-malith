@@ -9,6 +9,5 @@ const createCompanyPaySlipInfo = async (paySlipData) => {
   }
 };
 
-module.exports = {
-  createCompanyPaySlipInfo,
-};
+const CompanyPaySlipRrepository = { createCompanyPaySlipInfo };
+module.exports = CompanyPaySlipRrepository;

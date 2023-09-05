@@ -70,9 +70,29 @@ const validatePaySlipData = (paySlipData) => {
   return schema.validate(paySlipData);
 };
 
-module.exports = {
+const validateLoginData = (data) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string()
+      .required()
+      .custom((value, helpers) => {
+        if (!passwordComplexity(value)) {
+          return helpers.error('password.complexity');
+        }
+        return value;
+      })
+      .messages({
+        'password.complexity':
+          'Password must contain at least 8 characters and meet the complexity requirements.',
+      }),
+  });
+  return schema.validate(data);
+};
+const Validation = {
   passwordComplexity,
   validateUserData,
   validateCompanyData,
   validatePaySlipData,
+  validateLoginData,
 };
+module.exports = Validation;

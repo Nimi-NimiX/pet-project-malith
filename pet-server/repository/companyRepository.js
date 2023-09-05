@@ -9,6 +9,5 @@ const createCompany = async (companyData) => {
   }
 };
 
-module.exports = {
-  createCompany,
-};
+const CompanyRrepository = { createCompany };
+module.exports = CompanyRrepository;
