@@ -29,6 +29,26 @@ const UserRrepository = {
       throw error;
     }
   },
+  updateUserProfile: async (userId, updatedUserProfile) => {
+    // Find the user by ID
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    // Update only user-specific fields
+    if (updatedUserProfile.username)
+      user.username = updatedUserProfile.username;
+    if (updatedUserProfile.email) user.email = updatedUserProfile.email;
+    if (updatedUserProfile.mobileNumber)
+      user.mobileNumber = updatedUserProfile.mobileNumber;
+
+    // Save the updated user data
+    await user.save();
+
+    return user;
+  },
 };
 
 module.exports = UserRrepository;
