@@ -98,6 +98,24 @@ const Validation = {
 
     return schema.validate(updatedProfile);
   },
+  validateCompanyProfileUpdate: (updatedCompanyProfile) => {
+    const schema = Joi.object({
+      companyName: Joi.string().min(3).max(100),
+      companyEmail: Joi.string().email(),
+      contactNumber: Joi.string()
+        .pattern(/^[0-9]{10,15}$/)
+        .required(),
+      field: Joi.string().min(3).max(50).required(),
+      addressLine1: Joi.string().min(5).max(100).required(),
+      addressLine2: Joi.string().max(100),
+      city: Joi.string().min(2).max(50),
+      country: Joi.string().min(2).max(50),
+      currency: Joi.string().min(2).max(50),
+      payday: Joi.number().integer().min(1).max(31),
+    });
+
+    return schema.validate(updatedCompanyProfile);
+  },
 };
 
 module.exports = Validation;
