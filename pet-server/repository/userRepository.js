@@ -1,24 +1,26 @@
 const User = require('../models/usersModel');
 
-const createUser = async (userData) => {
-  try {
-    const user = await User.create(userData);
-    return user;
-  } catch (error) {
-    throw error;
-  }
+const UserRrepository = {
+  createUser: async (userData) => {
+    try {
+      const user = await User.create(userData);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getUserByEmail: async (email) => {
+    try {
+      const user = await User.findOne({
+        where: { email },
+      });
+
+      return user;
+    } catch (error) {
+      throw new Error(`Error fetching user by email: ${error.message} `);
+    }
+  },
 };
 
-const getUserByEmail = async (email) => {
-  try {
-    const user = await User.findOne({
-      where: { email },
-    });
-
-    return user;
-  } catch (error) {
-    throw new Error(`Error fetching user by email: ${error.message} `);
-  }
-};
-const UserRrepository = { createUser, getUserByEmail };
 module.exports = UserRrepository;
