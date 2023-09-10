@@ -15,12 +15,12 @@ router.put(
   ProfileController.updateUserProfile
 );
 router.get(
-  '/profile',
+  '/comprofile',
   Authentication.authenticateUser,
   ProfileController.getCompanyProfile
 );
 router.put(
-  '/profile',
+  '/comprofile',
   Authentication.authenticateUser,
   ProfileController.updateCompanyProfile
 );

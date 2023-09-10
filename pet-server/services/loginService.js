@@ -27,10 +27,11 @@ const LoginService = {
       }
 
       // Generate a JWT token for authentication
-      return jwt.sign({ userId: user.id }, secretKey, {
-        expiresIn: '1h',
-        message: 'Login successful',
+      const token = jwt.sign({ userId: user.id }, secretKey, {
+        expiresIn: '1h', // Token expires in 1 hour (adjust as needed)
       });
+
+      return { success: true, message: 'Login successful', token };
     } catch (error) {
       throw new Error(`Login failed: ${error.message}`);
     }
