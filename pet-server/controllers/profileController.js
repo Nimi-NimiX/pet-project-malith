@@ -3,8 +3,6 @@ const ProfileService = require('../services/profileService');
 const ProfileController = {
   getUserProfile: async (req, res, next) => {
     try {
-      console.log('controller');
-      console.log(`req : ${req.user.userId}`);
       const id = req.user.userId;
 
       const user = await ProfileService.getUserProfile(id);
@@ -23,7 +21,6 @@ const ProfileController = {
     try {
       const userId = req.user.userId;
       const updatedProfile = req.body;
-      console.log(`update profile :${updatedProfile}`);
 
       const result = await ProfileService.updateUserProfile(
         userId,
@@ -55,10 +52,8 @@ const ProfileController = {
       const userId = req.user.userId;
 
       const company = await ProfileService.getCompanyProfile(userId);
-      console.log(`company id:${company.id}`);
+
       const payslip = await ProfileService.getPaySlipProfile(company.id);
-      console.log(`company id:${company.id}`);
-      console.log(`pay slip :${payslip.payday}`);
 
       const companyProfile = {
         companyName: company.companyName,
@@ -99,9 +94,6 @@ const ProfileController = {
         currency: result.paySlip.currency,
         payday: result.paySlip.payday,
       };
-      console.log(
-        `updated profile :${updatedCompanyProfile}  pay day :${updatedCompanyProfile.payday} city:${updatedCompanyProfile.city}`
-      );
 
       res.status(200).json(updatedCompanyProfile);
     } catch (error) {

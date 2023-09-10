@@ -18,7 +18,6 @@ const Authentication = {
       : token;
 
     jwt.verify(tokenWithoutBearer, secretKey, (err, user) => {
-      // console.log(`token :${tokenWithoutBearer} secretkey :${secretKey}`);
       if (err) {
         return res.status(401).json({ error: 'Unauthorized token' });
       }

@@ -19,11 +19,10 @@ const CompanyPaySlipRrepository = {
   },
   findByCompanyId: async (companyId) => {
     try {
-      console.log(`pay slip companyid: ${companyId}`);
       const companyPaySlip = await CompanyPaySlipInfo.findOne({
         where: { companyId },
       });
-      console.log(`pay slip ${companyPaySlip}`);
+
       return companyPaySlip;
     } catch (error) {
       throw error;

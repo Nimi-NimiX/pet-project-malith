@@ -14,8 +14,6 @@ passport.use(
   new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
     try {
       const user = await UserRrepository.findById(jwtPayload.userId);
-      // console.log(`usser id: ${jwtPayload.userId}`);
-      // console.log(`user :${user.username}`);
 
       if (!user) {
         console.log(`user not found`);

@@ -59,7 +59,6 @@ const ProfileService = {
         companyId
       );
 
-      console.log(`company pay slip :${companyPaySlip}`);
       return companyPaySlip;
     } catch (error) {
       throw new Error(`Failed to fetch company profile: ${error.message}`);
