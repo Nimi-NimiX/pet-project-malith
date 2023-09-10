@@ -29,24 +29,14 @@ const UserRrepository = {
       throw error;
     }
   },
-  updateUserProfile: async (userId, updatedUserProfile) => {
-    const user = await User.findByPk(userId);
-
-    if (!user) {
-      throw new Error('User not found');
+  updateUserProfile: async (updatedUserProfile) => {
+    try {
+      // Save the updated user data
+      await updatedUserProfile.save();
+      return updatedUserProfile;
+    } catch (error) {
+      throw error;
     }
-
-    // Update only user-specific fields
-    if (updatedUserProfile.username)
-      user.username = updatedUserProfile.username;
-    if (updatedUserProfile.email) user.email = updatedUserProfile.email;
-    if (updatedUserProfile.mobileNumber)
-      user.mobileNumber = updatedUserProfile.mobileNumber;
-
-    // Save the updated user data
-    await user.save();
-
-    return user;
   },
 };
 
