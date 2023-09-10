@@ -13,17 +13,22 @@ const jwtOptions = {
 passport.use(
   new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
     try {
-      const user = await UserRrepository.findById(jwtPayload.sub);
+      const user = await UserRrepository.findById(jwtPayload.userId);
+      // console.log(`usser id: ${jwtPayload.userId}`);
+      // console.log(`user :${user.username}`);
 
       if (!user) {
+        console.log(`user not found`);
+
         return done(null, false); // User not found
       }
-
+      console.log(`user found and authenticated`);
       return done(null, user); // User found and authenticated
     } catch (error) {
+      console.log(`Error while fetching user`);
       return done(error, false); // Error while fetching user
     }
   })
 );
-
+console.log('Passport configuration is loaded.');
 module.exports = passport;
