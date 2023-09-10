@@ -14,12 +14,16 @@ require('dotenv').config();
 //middleware
 app.use(cors());
 app.use(express.json());
+
+// Initialize and configure Passport for authentication
 app.use(passport.initialize());
+require('./configuration/userConfig');
 
 //routes
 //Use the auth routes for registration and login
 app.use('/auth', authRoutes);
 //Use the profile routes for user profile and company profile
+app.use(passport.authenticate('jwt', { session: false })); // Passport middleware
 app.use('/api', profileRoutes);
 
 app.listen(process.env.SERVER_PORT, () => {
