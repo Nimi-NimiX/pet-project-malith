@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/databaseConnection');
 const Company = require('../models/companyModel'); // Import the Company model
+const CategoryTpes = require('../enum/enum');
 
 const CompanyPaySlipInfo = sequelize.define(
   'companyPaySlipInfo',
@@ -20,11 +21,13 @@ const CompanyPaySlipInfo = sequelize.define(
       },
     },
     currency: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
+      values: Object.values(CategoryTpes.defaultCurrencyEnum),
       allowNull: false,
       validate: {
         len: [2, 50],
       },
+      defaultValue: CategoryTpes.defaultCurrencyEnum.USD,
     },
     payday: {
       type: DataTypes.INTEGER,
