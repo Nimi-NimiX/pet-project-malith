@@ -4,3 +4,5 @@
 /pet-server/.env
 /pet-server/database.sql
 /pet-server/models/abc.js
+/pet-client/node_modules
+/pet-client/.env
