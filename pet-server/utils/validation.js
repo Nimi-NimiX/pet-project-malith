@@ -1,6 +1,5 @@
 const Joi = require('joi');
-
-
+const CategoryTpes = require('../enum/enum');
 
 // Check password complexity requirements
 const passwordComplexity = (password) => {
@@ -53,7 +52,9 @@ const Validation = {
       contactNumber: Joi.string()
         .pattern(/^[0-9]{10,15}$/)
         .required(),
-      field: Joi.string().min(3).max(50).required(),
+      field: Joi.string()
+        .valid(...Object.values(CategoryTpes.companyFieldEnum))
+        .required(),
       addressLine1: Joi.string().min(5).max(100).required(),
       addressLine2: Joi.string().max(100),
       city: Joi.string().min(2).max(50),
@@ -65,7 +66,9 @@ const Validation = {
 
   validatePaySlipData: (paySlipData) => {
     const schema = Joi.object({
-      currency: Joi.string().min(2).max(50).required(),
+      currency: Joi.string()
+        .valid(...Object.values(CategoryTpes.defaultCurrencyEnum))
+        .required(),
       payday: Joi.number().integer().min(1).max(31).required(),
     });
 
@@ -106,12 +109,16 @@ const Validation = {
       contactNumber: Joi.string()
         .pattern(/^[0-9]{10,15}$/)
         .required(),
-      field: Joi.string().min(3).max(50).required(),
+      field: Joi.string()
+        .valid(...Object.values(CategoryTpes.companyFieldEnum))
+        .required(),
       addressLine1: Joi.string().min(5).max(100).required(),
       addressLine2: Joi.string().max(100),
       city: Joi.string().min(2).max(50),
       country: Joi.string().min(2).max(50),
-      currency: Joi.string().min(2).max(50),
+      currency: Joi.string()
+        .valid(...Object.values(CategoryTpes.defaultCurrencyEnum))
+        .required(),
       payday: Joi.number().integer().min(1).max(31),
     });
 
