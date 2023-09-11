@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/databaseConnection');
+const CategoryTpes = require('../enum/enum');
 const User = require('./usersModel'); // Import the User model
 
 const Company = sequelize.define(
@@ -40,11 +41,13 @@ const Company = sequelize.define(
       },
     },
     field: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
+      values: Object.values(CategoryTpes.companyFieldEnum),
       allowNull: false,
       validate: {
         len: [3, 50],
       },
+      defaultValue: CategoryTpes.companyFieldEnum.IT,
     },
     addressLine1: {
       type: DataTypes.STRING,
