@@ -8,6 +8,7 @@ import {
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
+//creatd Personal infomation child component
 const PersonalInfo = (props) => {
   const { formik } = props;
 
@@ -25,7 +26,7 @@ const PersonalInfo = (props) => {
             onChange={formik.handleChange}
             value={formik.values.username}
             helperText={formik.touched.username && formik.errors.username}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -41,7 +42,7 @@ const PersonalInfo = (props) => {
             onChange={formik.handleChange}
             value={formik.values.email}
             helperText={formik.touched.email && formik.errors.email}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -54,7 +55,7 @@ const PersonalInfo = (props) => {
               fullWidth: true,
               size: 'small',
             }}
-            country={'us'} // Set the default country (you can change this)
+            country={'us'}
             value={formik.values.mobileNumber}
             onChange={(value) => {
               formik.setFieldValue('mobileNumber', value);
@@ -76,7 +77,7 @@ const PersonalInfo = (props) => {
             onChange={formik.handleChange}
             value={formik.values.password}
             helperText={formik.touched.password && formik.errors.password}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -96,7 +97,7 @@ const PersonalInfo = (props) => {
             helperText={
               formik.touched.confirmPassword && formik.errors.confirmPassword
             }
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>

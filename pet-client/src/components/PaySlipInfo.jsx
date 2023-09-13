@@ -2,6 +2,7 @@ import { TextField, Grid } from '@mui/material';
 import { DatePicker } from '@mui/lab';
 import CustomDayPicker from '../components/CustomDayPicker';
 
+//creatd Pay Slip infomation child component
 const PaySlipInfo = (props) => {
   const { formik } = props;
 
@@ -23,7 +24,7 @@ const PaySlipInfo = (props) => {
             helperText={
               formik.touched.addressLine1 && formik.errors.addressLine1
             }
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -42,7 +43,7 @@ const PaySlipInfo = (props) => {
             helperText={
               formik.touched.addressLine2 && formik.errors.addressLine2
             }
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -57,7 +58,7 @@ const PaySlipInfo = (props) => {
             onChange={formik.handleChange}
             error={formik.touched.city && Boolean(formik.errors.city)}
             helperText={formik.touched.city && formik.errors.city}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -72,7 +73,7 @@ const PaySlipInfo = (props) => {
             onChange={formik.handleChange}
             error={formik.touched.country && Boolean(formik.errors.country)}
             helperText={formik.touched.country && formik.errors.country}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -93,7 +94,7 @@ const PaySlipInfo = (props) => {
             helperText={
               formik.touched.companyEmail && formik.errors.companyEmail
             }
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -115,7 +116,7 @@ const PaySlipInfo = (props) => {
             helperText={
               formik.touched.contactNumber && formik.errors.contactNumber
             }
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
@@ -130,7 +131,7 @@ const PaySlipInfo = (props) => {
             onChange={formik.handleChange}
             error={formik.touched.payday && Boolean(formik.errors.payday)}
             helperText={formik.touched.payday && formik.errors.payday}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>

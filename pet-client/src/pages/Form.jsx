@@ -20,6 +20,7 @@ import CompanyInfo from '../components/CompanyInfo';
 import PaySlipInfo from '../components/PaySlipInfo';
 import ReviewInfo from '../components/ReviewInfo';
 
+// Define the steps for the registration process
 const steps = [
   'Personal Details',
   'Company Details',
@@ -28,9 +29,11 @@ const steps = [
 ];
 
 const Form = () => {
+  // State to track the active step and registration status
   const [activeStep, setActiveStep] = useState(0);
   const [registrationStatus, setRegistrationStatus] = useState(null);
 
+  // Function to check password complexity
   const passwordComplexity = (password) => {
     const hasLowercase = /[a-z]/.test(password);
     const hasUppercase = /[A-Z]/.test(password);
@@ -43,13 +46,11 @@ const Form = () => {
       hasDigit,
       hasSpecialChar,
     ].filter(Boolean).length;
-    console.log(
-      `length :${password.length} meet criteria :${meetsCriteriaCount}`
-    );
 
     return password.length >= 8 && meetsCriteriaCount >= 3;
   };
 
+  // Initialize formik with initial values and validation schema
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -105,6 +106,7 @@ const Form = () => {
       agreement: Yup.boolean().oneOf([true]),
     }),
 
+    // Handle form submission based on the active step
     onSubmit: (values) => {
       if (activeStep === steps.length - 1) {
         handleFormSubmit(values);
@@ -114,30 +116,22 @@ const Form = () => {
     },
   });
 
+  // Function to handle form submission
   const handleFormSubmit = async (values) => {
     try {
-      console.log('handleFormSubmit called');
       const response = await registerUser(values);
-      console.log(`respons status :${response.status}`);
 
       if (response.status === 201) {
-        console.log('Form submitted successfully');
         setRegistrationStatus('success');
-        // Handle the success response
       } else if (response.status === 400) {
-        console.log('Form submission failed');
         setRegistrationStatus('failure');
-        // Handle the error response (e.g., display an error message)
       } else {
-        // Handle other status codes if needed
       }
     } catch (error) {
-      console.log('An error occurred during form submission:', error);
       setRegistrationStatus('failure');
-      // Handle network errors or unexpected errors
     }
   };
-
+  // Function to get the fields for the current step
   const getStepFields = (step) => {
     switch (step) {
       case 0:
@@ -165,17 +159,14 @@ const Form = () => {
         return [];
     }
   };
-
+  // Function to handle moving to the next step
   const handleNext = () => {
     console.log('handleNext called');
     formik.validateForm().then((errors) => {
       const stepFields = getStepFields(activeStep);
       const stepErrors = stepFields.some((field) => errors[field]);
-      console.log('stepFields:', stepFields);
-      console.log('errors:', errors);
-      console.log('stepErrors:', stepErrors);
+
       if (!stepErrors) {
-        // Clear step-specific errors without resetting the form values
         stepFields.forEach((field) => {
           formik.setFieldError(field, '');
         });
@@ -184,11 +175,12 @@ const Form = () => {
       }
     });
   };
-
+  // Function to handle moving back to the previous step
   const handleBack = () => {
     setActiveStep((prevStep) => prevStep - 1);
   };
 
+  // Function to render the form content based on the current step and registration status
   const formContent = (step) => {
     if (registrationStatus === 'success') {
       return (
@@ -203,6 +195,7 @@ const Form = () => {
         </Typography>
       );
     } else {
+      // Render different form components based on the current step
       switch (step) {
         case 0:
           return <PersonalInfo formik={formik} />;

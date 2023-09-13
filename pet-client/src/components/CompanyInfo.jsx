@@ -1,6 +1,7 @@
 import { TextField, Grid, InputLabel, Select, MenuItem } from '@mui/material';
 import { companyFields, currencies } from '../constants/constants';
 
+//creatd company infomation child component
 const CompanyInfo = (props) => {
   const { formik } = props;
   return (
@@ -19,7 +20,7 @@ const CompanyInfo = (props) => {
               formik.touched.companyName && Boolean(formik.errors.companyName)
             }
             helperText={formik.touched.companyName && formik.errors.companyName}
-            onBlur={formik.handleBlur} // Add onBlur handler to update touched state
+            onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
           />
         </Grid>
