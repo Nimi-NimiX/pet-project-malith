@@ -30,10 +30,9 @@ const Validation = {
       password: Joi.string()
         .required()
         .custom((value, helpers) => {
-          if (passwordComplexity(value)) {
+          if (!passwordComplexity(value)) {
             return helpers.error('password.complexity');
           }
-          return value;
         })
         .messages({
           'password.complexity':
