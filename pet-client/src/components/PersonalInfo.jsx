@@ -4,13 +4,29 @@ import {
   FormHelperText,
   FormControlLabel,
   Checkbox,
+  FormControl,
+  InputLabel,
+  FilledInput,
+  InputAdornment,
+  IconButton,
+  OutlinedInput,
 } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import { useState } from 'react';
 
 //creatd Personal infomation child component
 const PersonalInfo = (props) => {
   const { formik } = props;
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -18,10 +34,10 @@ const PersonalInfo = (props) => {
         <Grid item xs={12}>
           <TextField
             name='username'
-            label='User Name*'
+            label='Name*'
             variant='outlined'
-            fullWidth
             size='small'
+            fullWidth
             error={Boolean(formik.touched.username && formik.errors.username)}
             onChange={formik.handleChange}
             value={formik.values.username}
@@ -33,11 +49,11 @@ const PersonalInfo = (props) => {
         <Grid item xs={12}>
           <TextField
             name='email'
-            label='Email*'
+            label='Email address*'
             variant='outlined'
+            size='small'
             type='email'
             fullWidth
-            size='small'
             error={Boolean(formik.touched.email && formik.errors.email)}
             onChange={formik.handleChange}
             value={formik.values.email}
@@ -47,31 +63,60 @@ const PersonalInfo = (props) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <PhoneInput
-            inputProps={{
-              name: 'mobileNumber',
-              label: 'Mobile Number*',
-              variant: 'outlined',
-              fullWidth: true,
-              size: 'small',
-            }}
-            country={'us'}
-            value={formik.values.mobileNumber}
-            onChange={(value) => {
-              formik.setFieldValue('mobileNumber', value);
-            }}
-          />
-          {formik.touched.mobileNumber && formik.errors.mobileNumber && (
-            <FormHelperText error>{formik.errors.mobileNumber}</FormHelperText>
-          )}
+          <FormControl fullWidth variant='outlined'>
+            <InputLabel
+              htmlFor='mobileNumber'
+              shrink
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: 'rgba(0, 0, 0, 0.54)',
+                paddingLeft: '78px',
+                marginBottom: '48px',
+              }}
+            >
+              Mobile Number*
+            </InputLabel>
+            <PhoneInput
+              inputProps={{
+                name: 'mobileNumber',
+                id: 'mobileNumber',
+
+                placeholder: 'Mobile number',
+                sx: {
+                  '& .MuiInputLabel-root': {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  },
+                },
+              }}
+              containerStyle={{}}
+              inputStyle={{
+                width: '440px',
+                height: '41px',
+              }}
+              helperText={
+                formik.touched.mobileNumber && formik.errors.mobileNumber
+              }
+              country={'us'}
+              fullWidth
+              value={formik.values.mobileNumber}
+              onChange={(value) => {
+                formik.setFieldValue('mobileNumber', value);
+              }}
+            />
+          </FormControl>
         </Grid>
+
         <Grid item xs={12}>
-          <TextField
+          <OutlinedInput
+            id='password'
             name='password'
-            label='Password*'
+            placeholder='Enter your password*'
             variant='outlined'
             size='small'
-            type='password'
             fullWidth
             error={Boolean(formik.touched.password && formik.errors.password)}
             onChange={formik.handleChange}
@@ -79,15 +124,28 @@ const PersonalInfo = (props) => {
             helperText={formik.touched.password && formik.errors.password}
             onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position='end'>
+                <IconButton
+                  aria-label='toggle password visibility'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge='end'
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <OutlinedInput
+            id='confirmPassword'
             name='confirmPassword'
-            label='Confirm Password*'
-            variant='outlined'
+            placeholder='Confirm your password*'
             size='small'
-            type='password'
+            variant='outlined'
             fullWidth
             error={Boolean(
               formik.touched.confirmPassword && formik.errors.confirmPassword
@@ -99,6 +157,19 @@ const PersonalInfo = (props) => {
             }
             onBlur={formik.handleBlur}
             onFocus={formik.handleFocus}
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position='end'>
+                <IconButton
+                  aria-label='toggle password visibility'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge='end'
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
         </Grid>
         <Grid item xs={12}>
@@ -109,10 +180,9 @@ const PersonalInfo = (props) => {
                 onChange={formik.handleChange}
                 name='agreement'
                 color='primary'
-                fullWidth
               />
             }
-            label='I agree to the terms and conditions'
+            label='I agree to the privacy policy and terms and conditions'
           />
         </Grid>
         {formik.errors.submit && (

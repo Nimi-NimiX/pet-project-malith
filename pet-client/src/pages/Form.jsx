@@ -21,12 +21,7 @@ import PaySlipInfo from '../components/PaySlipInfo';
 import ReviewInfo from '../components/ReviewInfo';
 
 // Define the steps for the registration process
-const steps = [
-  'Personal Details',
-  'Company Details',
-  'Pay slip Details',
-  'review and submit',
-];
+const steps = ['Personal Details', 'Company Details', 'Pay slip Details'];
 
 const Form = () => {
   // State to track the active step and registration status
@@ -203,8 +198,6 @@ const Form = () => {
           return <CompanyInfo formik={formik} />;
         case 2:
           return <PaySlipInfo formik={formik} />;
-        case 3:
-          return <ReviewInfo formik={formik} />;
 
         default:
           return null;
@@ -229,14 +222,15 @@ const Form = () => {
     >
       <Box
         sx={{
-          maxWidth: '900px',
-          padding: 2,
+          maxWidth: '480px',
+
+          padding: 3,
           backgroundColor: 'rgba(255, 255, 255, 2)',
           borderRadius: '12px',
         }}
       >
         <Box sx={{ my: 4 }}>
-          <Typography variant='h5' align='center'>
+          <Typography variant='h5' align='center' sx={{ fontWeight: 'bold' }}>
             Registration
           </Typography>
           <Typography variant='subtitle2' align='center' sx={{ mt: 2 }}>
@@ -268,38 +262,60 @@ const Form = () => {
             ) : (
               formContent(activeStep)
             )}
+            {registrationStatus === null && (
+              <Grid item xs={12}>
+                <ButtonGroup fullWidth>
+                  {activeStep === steps.length - 1 ? (
+                    <Button
+                      variant='contained'
+                      onClick={formik.handleSubmit}
+                      disabled={
+                        activeStep === steps.length - 1
+                          ? false
+                          : !formik.values.agreement ||
+                            Object.keys(formik.errors).length > 0
+                      }
+                      sx={{
+                        borderRadius: '15px',
+                        marginTop: '20px',
+                        height: '45px',
+                      }}
+                    >
+                      Register
+                    </Button>
+                  ) : (
+                    <Button
+                      variant='contained'
+                      sx={{
+                        borderRadius: '15px',
+                        marginTop: '20px',
+                        height: '45px',
+                      }}
+                      onClick={handleNext}
+                    >
+                      Next
+                    </Button>
+                  )}
+                </ButtonGroup>
+                {activeStep > 0 && (
+                  <Button
+                    fullWidth
+                    onClick={handleBack}
+                    sx={{
+                      borderRadius: '15px',
+                      marginTop: '20px',
+                      height: '45px',
+                    }}
+                  >
+                    Go Back
+                  </Button>
+                )}
+              </Grid>
+            )}
           </Grid>
           {formik.errors.submit && (
             <Grid item xs={12}>
               <FormHelperText error>{formik.errors.submit}</FormHelperText>
-            </Grid>
-          )}
-          {registrationStatus === null && (
-            <Grid item xs={12}>
-              <ButtonGroup>
-                {activeStep > 0 && <Button onClick={handleBack}>Back</Button>}
-                {activeStep === steps.length - 1 ? (
-                  <Button
-                    variant='contained'
-                    onClick={formik.handleSubmit}
-                    disabled={
-                      activeStep === steps.length - 1
-                        ? false
-                        : !formik.values.agreement ||
-                          Object.keys(formik.errors).length > 0
-                    }
-                    sx={{
-                      width: '80px',
-                    }}
-                  >
-                    Submit
-                  </Button>
-                ) : (
-                  <Button variant='contained' onClick={handleNext}>
-                    Next
-                  </Button>
-                )}
-              </ButtonGroup>
             </Grid>
           )}
         </Grid>

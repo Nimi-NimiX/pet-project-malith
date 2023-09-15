@@ -7,13 +7,13 @@ const CompanyInfo = (props) => {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <TextField
             name='companyName'
             label='Company Name'
             variant='outlined'
-            size='small'
             fullWidth
+            size='small'
             value={formik.values.companyName}
             onChange={formik.handleChange}
             error={
@@ -25,21 +25,28 @@ const CompanyInfo = (props) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <InputLabel htmlFor='currencyld'>Currency</InputLabel>
           <Select
-            id='currency'
-            name='currency'
-            value={formik.values.currency}
+            id='field'
+            name='field'
+            size='small'
+            value={formik.values.field}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.currency && Boolean(formik.errors.currency)}
+            error={formik.touched.field && Boolean(formik.errors.field)}
             fullWidth
             variant='outlined'
-            size='small'
-            helperText={formik.touched.currency && formik.errors.currency}
+            helperText={formik.touched.field && formik.errors.field}
+            displayEmpty
+            sx={{
+              '& .MuiSelect-select': {
+                paddingLeft: '10px',
+              },
+            }}
           >
-            <MenuItem value=''>Select Company currency</MenuItem>
-            {currencies.map((option) => (
+            <MenuItem value='' disabled>
+              Field*
+            </MenuItem>
+            {companyFields.map((option) => (
               <MenuItem key={option} value={option}>
                 {option}
               </MenuItem>
@@ -47,21 +54,28 @@ const CompanyInfo = (props) => {
           </Select>
         </Grid>
         <Grid item xs={12}>
-          <InputLabel htmlFor='field'>Company Field</InputLabel>
           <Select
-            id='field'
-            name='field'
-            value={formik.values.field}
+            id='currency'
+            name='currency'
+            size='small'
+            value={formik.values.currency}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.field && Boolean(formik.errors.field)}
+            error={formik.touched.currency && Boolean(formik.errors.currency)}
             fullWidth
             variant='outlined'
-            size='small'
-            helperText={formik.touched.field && formik.errors.field}
+            helperText={formik.touched.currency && formik.errors.currency}
+            displayEmpty
+            sx={{
+              '& .MuiSelect-select': {
+                paddingLeft: '50px',
+              },
+            }}
           >
-            <MenuItem value=''>Select Company Field</MenuItem>
-            {companyFields.map((option) => (
+            <MenuItem value='' disabled>
+              Default currency*
+            </MenuItem>
+            {currencies.map((option) => (
               <MenuItem key={option} value={option}>
                 {option}
               </MenuItem>

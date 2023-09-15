@@ -1,6 +1,8 @@
-import { TextField, Grid } from '@mui/material';
+import { TextField, Grid, FormControl, InputLabel } from '@mui/material';
 import { DatePicker } from '@mui/lab';
 import CustomDayPicker from '../components/CustomDayPicker';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 //creatd Pay Slip infomation child component
 const PaySlipInfo = (props) => {
@@ -84,8 +86,8 @@ const PaySlipInfo = (props) => {
             label='Company Email'
             variant='outlined'
             type='email'
-            fullWidth
             size='small'
+            fullWidth
             value={formik.values.companyEmail}
             onChange={formik.handleChange}
             error={
@@ -100,25 +102,51 @@ const PaySlipInfo = (props) => {
         </Grid>
 
         <Grid item xs={12}>
-          <TextField
-            name='contactNumber'
-            label='Contact Number'
-            variant='outlined'
-            type='phone'
-            fullWidth
-            size='small'
-            value={formik.values.contactNumber}
-            onChange={formik.handleChange}
-            error={
-              formik.touched.contactNumber &&
-              Boolean(formik.errors.contactNumber)
-            }
-            helperText={
-              formik.touched.contactNumber && formik.errors.contactNumber
-            }
-            onBlur={formik.handleBlur}
-            onFocus={formik.handleFocus}
-          />
+          <FormControl fullWidth variant='outlined'>
+            <InputLabel
+              htmlFor='contactNumber'
+              shrink
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: 'rgba(0, 0, 0, 0.54)',
+                paddingLeft: '78px',
+                marginBottom: '48px',
+              }}
+            >
+              Company Contact Number*
+            </InputLabel>
+            <PhoneInput
+              inputProps={{
+                name: 'contactNumber',
+                id: 'contactNumber',
+
+                placeholder: 'Company Contact number',
+                sx: {
+                  '& .MuiInputLabel-root': {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  },
+                },
+              }}
+              containerStyle={{}}
+              inputStyle={{
+                width: '440px',
+                height: '41px',
+              }}
+              helperText={
+                formik.touched.mobileNumber && formik.errors.mobileNumber
+              }
+              country={'us'}
+              fullWidth
+              value={formik.values.mobileNumber}
+              onChange={(value) => {
+                formik.setFieldValue('contactNumber', value);
+              }}
+            />
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <TextField
